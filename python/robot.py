@@ -15,10 +15,10 @@ def main():
         cmd = input()       # read user input
 
         if cmd.startswith("PLACE"):
-            args = cmd.split("PLACE ")[1].split(",")  # parse the operands for the PLACE command
-            x,y = int(args[0]),int(args[1])
+            args = cmd.split("PLACE ")[1].split(",")  # extract the operand string for the PLACE command
+            x,y = int(args[0]),int(args[1])           # parse the position operands
             if validPosition(x,y):  # check if we're placing on a valid position 
-                pos = x,y
+                pos = x,y          
                 if len(args) == 3: 
                     dir = str2Dir[args[2]]    # n.b - we only accept a new direction if it was given with a valid position    
                     startState = False  # mark that we have exited the starting state 
