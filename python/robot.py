@@ -17,9 +17,9 @@ def main():
         if cmd.startswith("PLACE"):
             args = cmd.split("PLACE ")[1].split(",")  # extract the operand string for the PLACE command
             x,y = int(args[0]),int(args[1])           # parse the position operands
-            if validPosition(x,y):  # check if we're placing on a valid position 
+            if validPosition(x,y):  # if it's a valid position - accept as the new position 
                 pos = x,y          
-                if len(args) == 3: 
+                if len(args) == 3:  # PLACE command includes direction argument - accept it as new direction
                     dir = str2Dir[args[2]]    # n.b - we only accept a new direction if it was given with a valid position    
                     startState = False  # mark that we have exited the starting state 
 
@@ -37,7 +37,7 @@ def main():
         elif cmd == "RIGHT":
             dir = dir[1],-dir[0] # rotating a point (a,b) clockwise is (b,-a)
 
-        elif cmd =="REPORT":
+        elif cmd == "REPORT":
             print(f'{pos[0]},{pos[1]},{dir2Str[dir]}')
 
 if __name__ == '__main__':
